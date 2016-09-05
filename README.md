@@ -275,7 +275,7 @@ apt-get install -y zookeeper zookeeperd git
 service zookeeper start
 #install docker: https://docs.docker.com/engine/installation/linux/ (must be 1.12 or later)
 #install docker-compose: https://docs.docker.com/compose/install/
-INTERFACE=l3vm
+INTERFACE=eth0
 EXT_RANGE=192.168.1.200/28
 IP=`ifconfig $INTERFACE | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'`
 SUBNET=`ip r sh |grep "$INTERFACE  proto" |grep -v default |awk '{print $1}'`
