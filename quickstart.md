@@ -4,12 +4,12 @@ Controller Node:
 
 ```
 apt-get install -y zookeeper zookeeperd git
-#change zookeeper port to 2191 in /etc/zookeeper/conf/zoo.conf (sed -i 's/2181/2191/g' /etc/zookeeper/conf/zoo.conf)
+#change zookeeper port to 2191 in /etc/zookeeper/conf/zoo.cfg (sed -i 's/2181/2191/g' /etc/zookeeper/conf/zoo.cfg)
 service zookeeper restart
 curl -sSL https://experimental.docker.com/ | sh
-curl -L https://github.com/docker/compose/releases/download/1.7.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+curl -L https://github.com/docker/compose/releases/download/1.8.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
-INTERFACE=l3vm
+INTERFACE=eth0
 EXT_RANGE=192.168.1.200/28
 IP=`ifconfig $INTERFACE | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'`
 SUBNET=`ip r sh |grep "$INTERFACE  proto" |grep -v default |awk '{print $1}'`
